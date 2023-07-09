@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Anti Age Face Treatment",
+        "price": 99,
+        "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam quae, consectetur expedita molestias minus aperiam dolores officia laudantium consequatur alias veniam eos rem illum ut.",
+        "id": 1,
+        "icon": "https://i.ibb.co/XYKnN8N/Group-1372.png"
+        
+    },
+    {
+        "name": "Hair Color & Styling",
+        "price": 299,
+        "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam quae, consectetur expedita molestias minus aperiam dolores officia laudantium consequatur alias veniam eos rem illum ut.",
+        "id": 2,
+        "icon":"https://i.ibb.co/GQqSH68/Group-1373.png"
+
+        
+    },
+    {
+        "name": "Skin Care Treatment",
+        "price": 399,
+        "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam quae, consectetur expedita molestias minus aperiam dolores officia laudantium consequatur alias veniam eos rem illum ut.",
+        "id": 1,
+        "icon":"https://i.ibb.co/hHLXQkZ/Group-1374.png"
+        
+    }
+]
