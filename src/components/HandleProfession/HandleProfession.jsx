@@ -7,14 +7,14 @@ const HandleProfession = () => {
     <Container>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 py-20">
         <div>
-          <img src={professionImg} alt="" />
+          <img src={professionImg} className="w-2/12" alt="" />
         </div>
         <div className="">
           <h4 className="text-2xl font-bold mb-5">
             Let us handle your <br /> screen{" "}
             <span className="text-pink-700">Professionally</span>
           </h4>
-          <p className="break-all">
+          <p className="break-all hidden">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
             facilis consequatur fugiat aliquid alias nihil corporis doloribus
             quisquam? Temporibus praesentium ut non! Ex, veritatis autem.

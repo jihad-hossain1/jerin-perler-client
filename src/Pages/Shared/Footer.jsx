@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <ul>
             <li>
-              <p>
-                H#000 (0th Floor), Road #00, New DOHS, Mohakhali, Dhaka,
+              <p className="break-all">
+                H#000 (0th Floor), Road #00, <br /> New DOHS, Mohakhali, Dhaka,
                 Bangladesh
               </p>
             </li>
@@ -58,11 +58,12 @@ const Footer = () => {
             <ul>
               <li className="pb-3 font-semibold">Quick Links</li>
             </ul>
-            <p className="">
-              lorem sit amet consectetur adipisicing elit. Inventore voluptatum
-              ut ullam! Debitis iusto, excepturi ullam, aperiam maxime, eos sit
-              aut dolore ad saepe laudantium libero provident animi explicabo
-              vero!
+            <p className="break-all">
+              lorem sit amet consectetur adipisicing <br /> elit. Inventore
+              voluptatum ut ullam! <br /> Debitis iusto, excepturi ullam,
+              aperiam <br />
+              maxime, eos sit aut dolore ad saepe <br /> laudantium libero
+              provident animi explicabo vero!
             </p>
             <ul className="flex gap-2 font-semibold pt-2">
               <li className="rounded px-4 bg-white text-pink-500 py-2 cursor-pointer hover:shadow">

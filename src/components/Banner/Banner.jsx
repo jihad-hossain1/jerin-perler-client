@@ -10,7 +10,7 @@ const Banner = () => {
             <h4 className="text-4xl font-bold uppercase">
               Beauty salon <br /> for every women
             </h4>
-            <p className="pb-10 break-all">
+            <p className="pb-10 break-all hidden">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, amet!
               Officia quibusdam eum, consectetur eveniet voluptatibus id.
               Quidem, repellat explicabo?
@@ -19,8 +19,8 @@ const Banner = () => {
               Get on Appointment
             </button>
           </div>
-          <div>
-            <img src={bannerImg} className="object-cover w-[500px]" alt="" />
+          <div className="max-w-[300px] h-auto">
+            <img src={bannerImg} className="object-cover" alt="" />
           </div>
         </div>
       </Container>
