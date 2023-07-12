@@ -15,7 +15,7 @@ const Services = () => {
     <Container>
       <div className="mt-16 md:mt-24 py-8 ">
         <div className="">
-          <h2 className="font-bold text-3xl md:text-center  py-8">
+          <h2 className="font-bold text-3xl text-center  py-8">
             Our Awesome
             <span className="text-[#F63E7B] ml-2">Services</span>
           </h2>
@@ -24,7 +24,7 @@ const Services = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className="rounded  shadow hover:shadow-lg flex flex-col justify-center items-center p-3 border hover:border-neutral-100 w-2/12 md:w-full "
+              className="rounded  shadow hover:shadow-lg flex flex-col justify-center items-center p-3 border hover:border-neutral-100 w-full md:w-full "
             >
               <img src={service?.icon} className="object-cover w-2/12" alt="" />
               <h4 className="font-semibold">{service?.name}</h4>
@@ -33,7 +33,7 @@ const Services = () => {
             </div>
           ))}
         </div>
-        <div className=" mt-6">
+        <div className="text-center mt-6">
           <Link to={`/service`}>
             <button className="bg-[#F63E7B]  hover:bg-[#f81662]  rounded px-6 py-2 shadow text-white font-semibold">
               Expolre More
