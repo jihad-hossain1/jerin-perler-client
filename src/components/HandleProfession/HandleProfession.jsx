@@ -1,5 +1,5 @@
 import React from "react";
-import professionImg from "../../assets/images/engin-akyurt-g-m8EDc4X6Q-unsplash 1.png";
+import professionImg from "../../assets/images/banner2.png";
 import Container from "../Container/Container";
 
 const HandleProfession = () => {

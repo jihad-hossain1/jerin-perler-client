@@ -1,5 +1,5 @@
 import React from "react";
-import bannerImg from "../../assets/images/beautiful-young-asian-woman-touching-her-clean-face-with-fresh-healthy-skin-isolated-white-wall-beauty-cosmetics-facial-treatment-concept 1.png";
+import bannerImg from "../../assets/images/banner.png";
 import Container from "../Container/Container";
 const Banner = () => {
   return (
