@@ -19,7 +19,7 @@ const Banner = () => {
               Get on Appointment
             </button>
           </div>
-          <div className="w-[350px] h-auto md:w-full">
+          <div className="w-[350px] h-auto md:w-full mx-auto">
             <img src={bannerImg} className="md:w-full" alt="" />
           </div>
         </div>

@@ -145,11 +145,11 @@ const Navbar = () => {
                 Contact Us
               </NavLink>
             </li>
-            <li className="rounded bg-[#F63E7B] inline-block px-4 py-2 cursor-pointer">
+            <li className="rounded bg-[#F63E7B] inline-block px-4 py-2 cursor-pointer ">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
-                  isActive ? "text-white font-semibold" : "text-neutral-800"
+                  isActive ? "text-white font-semibold" : "text-white"
                 }
               >
                 LogIn

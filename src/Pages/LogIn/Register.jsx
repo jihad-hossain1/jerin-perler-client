@@ -1,11 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Container from "../../components/Container/Container";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
 
-const Login = () => {
+const Register = () => {
   const {
     register,
     handleSubmit,
@@ -17,12 +16,26 @@ const Login = () => {
     console.log(data);
   };
   return (
-    <div className="">
+    <div className="mb-8">
       <div className="mx-5 md:w-2/3 lg:w-2/5 md:mx-auto">
         <div className="border border-neutral-300 px-4 md:px-16 pt-16 pb-8 mt-14">
-          <h4 className="text-2xl font-bold py-4">LogIn into account </h4>
+          <h4 className="text-2xl font-bold py-4">Create an account </h4>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-4">
+              <div>
+                <input
+                  type="text"
+                  name=""
+                  placeholder="Full Name"
+                  className="bg-white border-b-[2px]  py-3 px-2 w-full focus:outline-none  focus:border-pink-500 focus:ring-1 focus:ring-pink-500 rounded-md placeholder-gray-700"
+                  {...register("name", { required: true })}
+                />
+                {errors.cpassword && (
+                  <span className="text-sm text-red-600">
+                    Give an full name
+                  </span>
+                )}
+              </div>
               <div>
                 <input
                   type="email"
@@ -47,28 +60,38 @@ const Login = () => {
                 />
                 {errors.cpassword && (
                   <span className="text-sm text-red-600">
-                    Please Enter a valid password
+                    Please make your password
                   </span>
                 )}
               </div>
-
+              <div>
+                <input
+                  type="password"
+                  name=""
+                  placeholder="Confirm Password"
+                  className="bg-white border-b-[2px]  py-3 px-2 w-full focus:outline-none  focus:border-pink-500 focus:ring-1 focus:ring-pink-500 rounded-md placeholder-gray-700"
+                  {...register("cpassword", { required: true })}
+                />
+                {errors.cpassword && (
+                  <span className="text-sm text-red-600">
+                    Please confirm your password
+                  </span>
+                )}
+              </div>
               <div className="mt-2">
                 <button
                   type="submit"
                   className="bg-pink-600 hover:bg-pink-500 w-full py-3 px-2 text-white rounded"
                 >
-                  LogIn
+                  Create an account
                 </button>
               </div>
             </div>
           </form>
           <div className="text-center mt-4">
-            <span>You have no account ?</span>{" "}
-            <Link
-              className="text-pink-600 ml-2 hover:underline"
-              to={`/register`}
-            >
-              Create an account
+            <span>Already have an account ?</span>{" "}
+            <Link className="text-pink-600 ml-2 hover:underline" to={`/login`}>
+              Login
             </Link>
           </div>
         </div>
@@ -85,13 +108,13 @@ const Login = () => {
           <div className="flex flex-col items-center gap-6">
             <div className="cursor-pointer hover:shadow flex items-center p-1 rounded-2xl border border-neutral-300 w-full md:w-2/3">
               <FcGoogle className="text-3xl mr-2 md:mr-24"></FcGoogle>{" "}
-              <div className="flex items-center">
+              <div className="flex items-center-center">
                 <h4>Continue with Google</h4>
               </div>
             </div>
             <div className="cursor-pointer hover:shadow flex items-center p-1 rounded-2xl border border-neutral-300 w-full md:w-2/3">
               <TfiFacebook className="text-3xl mr-2 md:mr-24  text-blue-700"></TfiFacebook>{" "}
-              <div className="flex items-center ">
+              <div className="flex items-center-center">
                 <h4>Continue with Facebook</h4>
               </div>
             </div>
@@ -102,4 +125,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
