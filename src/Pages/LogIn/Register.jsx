@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-  const { signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle, createUser, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
   const {
@@ -19,6 +21,17 @@ const Register = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        console.log(result);
+        if (result) {
+          reset();
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.log(error?.message);
+      });
   };
   const handleGoogleSignIn = () => {
     console.log("clck");
@@ -37,7 +50,7 @@ const Register = () => {
     <div className="mb-8">
       <div className="mx-5 md:w-2/3 lg:w-2/5 md:mx-auto">
         <div className="border border-neutral-300 px-4 md:px-16 pt-16 pb-8 mt-14">
-          <h4 className="text-2xl font-bold py-4">Create an account </h4>
+          <h4 className="text-2xl font-bold py-4">Create an account</h4>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-4">
               <div>

@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Container from "../../components/Container/Container";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const { signInWithGoogle, signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handleGoogleSignIn = () => {
+    console.log("clck");
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        //  saveUser(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        // toast.error(`${error}`);
+      });
+  };
   const {
     register,
     handleSubmit,
@@ -15,6 +35,15 @@ const Login = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        console.log(result);
+        navigate(from, { replace: true });
+        reset();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <div className="">
@@ -82,7 +111,10 @@ const Login = () => {
               <div className="divider"></div>
             </div>
           </div>
-          <div className="flex flex-col items-center gap-6">
+          <div
+            onClick={handleGoogleSignIn}
+            className="flex flex-col items-center gap-6"
+          >
             <div className="cursor-pointer hover:shadow flex items-center p-1 rounded-2xl border border-neutral-300 w-full md:w-2/3">
               <FcGoogle className="text-3xl mr-2 md:mr-24"></FcGoogle>{" "}
               <div className="flex items-center">

@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
+  FacebookAuthProvider,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -16,10 +17,15 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const handleFacebookLogin = () => {
+    facebookProvider();
+  };
 
   const createUser = (email, password) => {
     setLoading(true);
