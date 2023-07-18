@@ -6,38 +6,75 @@ import { Button, Drawer } from "antd";
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { HiQueueList } from "react-icons/hi2";
+
+import {
+  HiUser,
+  HiOutlineHeart,
+  HiCog6Tooth,
+  HiShoppingCart,
+} from "react-icons/hi2";
 
 import { Dropdown, Space } from "antd";
 
-const items = [
-  {
-    key: "1",
-    label: <Link to={`/`}>Profile</Link>,
-  },
-  {
-    key: "2",
-    label: <Link to={`/`}>Dashboard</Link>,
-  },
-  {
-    key: "3",
-    label: (
-      <button className="border border-pink-500 px-4 py-1 rounded shadow font-semibold">
-        LogOut
-      </button>
-    ),
-  },
-];
-
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
+  const items = [
+    {
+      key: "1",
+      label: (
+        <Link to={``} className="flex gap-2 items-center">
+          <HiOutlineHeart className="text-2xl text-pink-600"></HiOutlineHeart>{" "}
+          <span className="">Favorite</span>{" "}
+        </Link>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <Link to={``} className="flex gap-2 items-center">
+          <HiUser className="text-2xl text-pink-600"></HiUser>{" "}
+          <span className="">Profile</span>{" "}
+        </Link>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <Link to={``} className="flex gap-2 items-center">
+          <HiCog6Tooth className="text-2xl text-pink-600"></HiCog6Tooth>{" "}
+          <span className="">Dashboard</span>{" "}
+        </Link>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <Link to={``} className="flex gap-2 items-center">
+          <HiShoppingCart className="text-2xl text-pink-600"></HiShoppingCart>{" "}
+          <span className="">My Cart</span>{" "}
+        </Link>
+      ),
+    },
+    {
+      key: "5",
+      label: (
+        <button
+          onClick={logOut}
+          className="border border-pink-500 px-2  rounded shadow font-semibold"
+        >
+          LogOut
+        </button>
+      ),
+    },
+  ];
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+
   return (
     <div className="bg-[#fcc2d5] bg-opacity-20">
       <Container>
@@ -55,7 +92,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </div>
-            <div className="flex items-center space-x-5">
+            <div className="flex items-center md:space-x-5 lg:space-x-10 xl:space-x-16">
               <li>
                 <NavLink
                   to="/"
@@ -98,18 +135,34 @@ const Navbar = () => {
               </li>
               {user ? (
                 <>
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}
+                  <div
+                    onClick={(e) => e.preventDefault()}
+                    className="flex gap-2"
+                    title={user?.displayName}
                   >
-                    <Space>
-                      <HiQueueList
-                        onClick={(e) => e.preventDefault()}
-                        className="text-3xl text-[#F63E7B]"
-                      ></HiQueueList>
-                    </Space>
-                  </Dropdown>
+                    <Dropdown
+                      menu={{
+                        items,
+                      }}
+                      placement="bottom"
+                    >
+                      <Space>
+                        <div className="avatar cursor-pointer">
+                          <div className="w-12 rounded-full">
+                            <img
+                              src={
+                                user?.photoURL ? (
+                                  user?.photoURL
+                                ) : (
+                                  <HiUser className="text-4xl text-gray-600"></HiUser>
+                                )
+                              }
+                            />
+                          </div>
+                        </div>
+                      </Space>
+                    </Dropdown>
+                  </div>
                 </>
               ) : (
                 <>
@@ -144,6 +197,7 @@ const Navbar = () => {
           width={200}
           onClose={onClose}
           open={open}
+
           // style={{ backgroundColor: "gray" }}
           // className="bg-gray-900"
         >
@@ -190,20 +244,38 @@ const Navbar = () => {
             </li>
             {user ? (
               <>
-                <HiQueueList></HiQueueList>
-                <div className="avatar cursor-pointer">
-                  <div className="w-14 rounded-full">
-                    <img src={user?.photoURL} />
-                  </div>
+                <div
+                  onClick={(e) => e.preventDefault()}
+                  className="flex gap-2"
+                  title={user?.displayName}
+                >
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}
+                    placement="bottom"
+                  >
+                    <Space>
+                      <div className="avatar cursor-pointer">
+                        <div className="w-12 rounded-full">
+                          <img
+                            src={
+                              user?.photoURL ? (
+                                user?.photoURL
+                              ) : (
+                                <HiUser className="text-4xl text-gray-600"></HiUser>
+                              )
+                            }
+                          />
+                        </div>
+                      </div>
+                    </Space>
+                  </Dropdown>
                 </div>
-
-                <button className="border border-pink-500 px-4 py-1 rounded shadow font-semibold">
-                  LogOut
-                </button>
               </>
             ) : (
               <>
-                <li className="rounded bg-[#F63E7B] inline-block px-4 py-2 cursor-pointer ">
+                <li className="rounded bg-[#F63E7B] inline-block px-4 py-1 cursor-pointer ">
                   <NavLink
                     to="/login"
                     className={({ isActive }) =>
