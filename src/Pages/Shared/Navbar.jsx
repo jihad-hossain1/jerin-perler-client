@@ -1,12 +1,36 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import logoImg from "../../assets/logo.png";
 import { Button, Drawer } from "antd";
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { HiQueueList } from "react-icons/hi2";
+
+import { Dropdown, Space } from "antd";
+
+const items = [
+  {
+    key: "1",
+    label: <Link to={`/`}>Profile</Link>,
+  },
+  {
+    key: "2",
+    label: <Link to={`/`}>Dashboard</Link>,
+  },
+  {
+    key: "3",
+    label: (
+      <button className="border border-pink-500 px-4 py-1 rounded shadow font-semibold">
+        LogOut
+      </button>
+    ),
+  },
+];
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -72,16 +96,35 @@ const Navbar = () => {
                   Contact Us
                 </NavLink>
               </li>
-              <li className="rounded bg-[#F63E7B] inline-block px-6 py-2 cursor-pointer ">
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? "text-white font-semibold" : "text-white"
-                  }
-                >
-                  LogIn
-                </NavLink>
-              </li>
+              {user ? (
+                <>
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}
+                  >
+                    <Space>
+                      <HiQueueList
+                        onClick={(e) => e.preventDefault()}
+                        className="text-3xl text-[#F63E7B]"
+                      ></HiQueueList>
+                    </Space>
+                  </Dropdown>
+                </>
+              ) : (
+                <>
+                  <li className="rounded bg-[#F63E7B] inline-block px-4 py-2 cursor-pointer ">
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive ? "text-white font-semibold" : "text-white"
+                      }
+                    >
+                      LogIn
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </div>
           </ul>
         </div>
@@ -145,16 +188,33 @@ const Navbar = () => {
                 Contact Us
               </NavLink>
             </li>
-            <li className="rounded bg-[#F63E7B] inline-block px-4 py-2 cursor-pointer ">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "text-white font-semibold" : "text-white"
-                }
-              >
-                LogIn
-              </NavLink>
-            </li>
+            {user ? (
+              <>
+                <HiQueueList></HiQueueList>
+                <div className="avatar cursor-pointer">
+                  <div className="w-14 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
+
+                <button className="border border-pink-500 px-4 py-1 rounded shadow font-semibold">
+                  LogOut
+                </button>
+              </>
+            ) : (
+              <>
+                <li className="rounded bg-[#F63E7B] inline-block px-4 py-2 cursor-pointer ">
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "text-white font-semibold" : "text-white"
+                    }
+                  >
+                    LogIn
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </Drawer>
       </div>
