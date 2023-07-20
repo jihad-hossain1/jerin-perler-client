@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { signInWithGoogle, createUser, updateUserProfile } =
@@ -20,17 +21,19 @@ const Register = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         if (result) {
           reset();
           navigate(from, { replace: true });
+          toast.success("Your Account Successful");
         }
       })
       .catch((error) => {
         console.log(error?.message);
+        toast.error(`${error.message}`);
       });
   };
   const handleGoogleSignIn = () => {
@@ -48,6 +51,7 @@ const Register = () => {
   };
   return (
     <div className="mb-8">
+      <Toaster></Toaster>
       <div className="mx-5 md:w-2/3 lg:w-2/5 md:mx-auto">
         <div className="border border-neutral-300 px-4 md:px-16 pt-16 pb-8 mt-14">
           <h4 className="text-2xl font-bold py-4">Create an account</h4>

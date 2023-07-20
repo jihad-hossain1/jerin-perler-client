@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const { signInWithGoogle, signIn } = useContext(AuthContext);
@@ -14,7 +15,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
-    console.log("clck");
+    // console.log("clck");
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
@@ -23,7 +24,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-        // toast.error(`${error}`);
+        toast.error(`${error}`);
       });
   };
   const {
@@ -34,19 +35,24 @@ const Login = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     signIn(data.email, data.password)
       .then((result) => {
-        console.log(result);
-        navigate(from, { replace: true });
-        reset();
+        // console.log(result);
+        if (result) {
+          navigate(from, { replace: true });
+          reset();
+          toast.success("Login Success");
+        }
       })
       .catch((error) => {
         console.log(error.message);
+        toast.error(`${error.message}`);
       });
   };
   return (
-    <div className="">
+    <div className="py-10">
+      <Toaster />
       <div className="mx-5 md:w-2/3 lg:w-2/5 md:mx-auto">
         <div className="border border-neutral-300 px-4 md:px-16 pt-16 pb-8 mt-14">
           <h4 className="text-2xl font-bold py-4">LogIn into account </h4>
@@ -111,11 +117,11 @@ const Login = () => {
               <div className="divider"></div>
             </div>
           </div>
-          <div
-            onClick={handleGoogleSignIn}
-            className="flex flex-col items-center gap-6"
-          >
-            <div className="cursor-pointer hover:shadow flex items-center p-1 rounded-2xl border border-neutral-300 w-full md:w-2/3">
+          <div className="flex flex-col items-center gap-6">
+            <div
+              onClick={handleGoogleSignIn}
+              className="cursor-pointer hover:shadow flex items-center p-1 rounded-2xl border border-neutral-300 w-full md:w-2/3"
+            >
               <FcGoogle className="text-3xl mr-2 md:mr-24"></FcGoogle>{" "}
               <div className="flex items-center">
                 <h4>Continue with Google</h4>
