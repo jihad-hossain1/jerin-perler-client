@@ -10,7 +10,7 @@ const Services = () => {
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
-  console.log(services);
+  // console.log(services);
   return (
     <Container>
       <div className="mt-16 md:mt-24 py-8 ">

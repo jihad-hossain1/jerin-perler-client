@@ -4,6 +4,7 @@ import Services from "../Services/Services";
 import HandleProfession from "../../components/HandleProfession/HandleProfession";
 import Testimonials from "../../components/Testimoials/Testimonials";
 import MessageBox from "../../components/MessageBox/MessageBox";
+import { FloatButton } from "antd";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       </div>
       <Testimonials></Testimonials>
       <MessageBox></MessageBox>
+      <FloatButton.BackTop />
     </div>
   );
 };

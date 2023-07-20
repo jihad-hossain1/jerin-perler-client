@@ -6,11 +6,13 @@ import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { saveUser } from "../../api/userApi";
 
 const Login = () => {
   const { signInWithGoogle, signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  // console.log(saveUser);
 
   const from = location.state?.from?.pathname || "/";
 
@@ -19,7 +21,7 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
-        //  saveUser(result.user);
+        saveUser(result.user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -38,6 +40,7 @@ const Login = () => {
     // console.log(data);
     signIn(data.email, data.password)
       .then((result) => {
+        saveUser(result.user);
         // console.log(result);
         if (result) {
           navigate(from, { replace: true });

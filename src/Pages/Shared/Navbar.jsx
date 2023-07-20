@@ -41,7 +41,7 @@ const Navbar = () => {
     {
       key: "3",
       label: (
-        <Link to={``} className="flex gap-2 items-center">
+        <Link to={`/dashboard`} className="flex gap-2 items-center">
           <HiCog6Tooth className="text-2xl text-pink-600"></HiCog6Tooth>{" "}
           <span className="">Dashboard</span>{" "}
         </Link>
@@ -151,9 +151,7 @@ const Navbar = () => {
                           <div className="w-12 rounded-full">
                             <img
                               src={
-                                user?.photoURL ? (
-                                  user?.photoURL
-                                ) : (
+                                user?.photoURL || (
                                   <HiUser className="text-4xl text-gray-600"></HiUser>
                                 )
                               }

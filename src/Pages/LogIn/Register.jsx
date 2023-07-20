@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { TfiFacebook } from "react-icons/tfi";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { saveUser } from "../../api/userApi";
 
 const Register = () => {
   const { signInWithGoogle, createUser, updateUserProfile } =
@@ -26,6 +27,7 @@ const Register = () => {
       .then((result) => {
         // console.log(result);
         if (result) {
+          saveUser(result.user);
           reset();
           navigate(from, { replace: true });
           toast.success("Your Account Successful");
@@ -40,9 +42,12 @@ const Register = () => {
     console.log("clck");
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
-        //  saveUser(result.user);
-        navigate(from, { replace: true });
+        if (result) {
+          console.log(result.user);
+          saveUser(result.user);
+          navigate(from, { replace: true });
+          toast.success("SignUp successful");
+        }
       })
       .catch((error) => {
         console.log(error.message);

@@ -23,7 +23,7 @@ const Testimonials = () => {
         // console.log(data)
       });
   }, []);
-  console.log(testimonial);
+  // console.log(testimonial);
   return (
     <Container>
       <div className="mt-24">
