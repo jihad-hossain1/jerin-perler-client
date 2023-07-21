@@ -80,6 +80,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     logOut,
     updateUserProfile,
+    handleFacebookLogin,
   };
 
   return (

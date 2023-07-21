@@ -21,9 +21,9 @@ const Services = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-6">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
-              key={service.id}
+              key={index}
               className="rounded  shadow hover:shadow-lg flex flex-col justify-center items-center p-3 border hover:border-neutral-100 w-full md:w-full "
             >
               <img src={service?.icon} className="object-cover w-2/12" alt="" />
