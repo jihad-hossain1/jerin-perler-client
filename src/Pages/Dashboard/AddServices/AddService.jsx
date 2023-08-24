@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
 
+const img_hosting_token = import.meta.env.VITE_BB_KEY;
+
 const AddService = () => {
   const {
     register,

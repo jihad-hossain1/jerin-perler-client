@@ -12,6 +12,7 @@ import AddService from "../Pages/Dashboard/AddServices/AddService";
 import MyCart from "../Pages/MyCart/MyCart";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import OurTeam from "../Pages/OurTeam/OurTeam";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "",
