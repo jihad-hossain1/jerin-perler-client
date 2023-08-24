@@ -50,7 +50,7 @@ const Navbar = () => {
     {
       key: "4",
       label: (
-        <Link to={``} className="flex gap-2 items-center">
+        <Link to={`/dashboard/mycarts`} className="flex gap-2 items-center">
           <HiShoppingCart className="text-2xl text-pink-600"></HiShoppingCart>{" "}
           <span className="">My Cart</span>{" "}
         </Link>
@@ -115,7 +115,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to=""
+                  to="/ourTeam"
                   className={({ isActive }) =>
                     isActive ? "text-pink-600 font-semibold" : "default"
                   }
@@ -125,7 +125,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to=""
+                  to="/contact"
                   className={({ isActive }) =>
                     isActive ? "text-pink-600 font-semibold" : "default"
                   }
@@ -222,7 +222,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to=""
+                to="/ourTeam"
                 className={({ isActive }) =>
                   isActive ? "text-pink-600 font-semibold" : "default"
                 }
@@ -232,7 +232,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to=""
+                to="/contact"
                 className={({ isActive }) =>
                   isActive ? "text-pink-600 font-semibold" : "default"
                 }
@@ -264,6 +264,7 @@ const Navbar = () => {
                                 <HiUser className="text-4xl text-gray-600"></HiUser>
                               )
                             }
+                            alt="user photo"
                           />
                         </div>
                       </div>

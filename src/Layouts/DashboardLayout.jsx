@@ -4,6 +4,10 @@ import { Button, Drawer, Space } from "antd";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaHouseUser, FaIndent } from "react-icons/fa";
 import { FaPeopleRoof } from "react-icons/fa6";
+import { AiFillSetting } from "react-icons/ai";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import { HiUserGroup } from "react-icons/hi";
+import { LuCopyPlus } from "react-icons/lu";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -40,15 +44,34 @@ const DashboardLayout = () => {
           <ul className="space-y-6 text-xl">
             <li>
               <NavLink
-                to={`/dashboard/allusers`}
+                to={`/dashboard/manageService`}
                 className="flex items-center gap-4 hover:text-pink-600"
               >
                 {" "}
-                <FaPeopleRoof className="text-3xl text-pink-600"></FaPeopleRoof>{" "}
+                <AiFillSetting className="text-3xl text-pink-600"></AiFillSetting>{" "}
+                Manage Service
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`/dashboard/allusers`}
+                className="flex items-center gap-4 hover:text-pink-600"
+              >
+                <HiUserGroup className="text-3xl text-pink-600"></HiUserGroup>{" "}
                 Manage Users
               </NavLink>
             </li>
 
+            <li>
+              <NavLink
+                to={`/dashboard/mycarts`}
+                className="flex items-center gap-4 hover:text-pink-600"
+              >
+                {" "}
+                <BsFillCartCheckFill className="text-3xl text-pink-600"></BsFillCartCheckFill>{" "}
+                My Carts
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to={`/dashboard`}
@@ -61,12 +84,22 @@ const DashboardLayout = () => {
             </li>
             <li>
               <NavLink
+                to={`/dashboard/addService`}
+                className="flex items-center gap-4 hover:text-pink-600"
+              >
+                {" "}
+                <LuCopyPlus className="text-3xl text-pink-600"></LuCopyPlus> Add
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to={`/`}
                 className="flex items-center gap-4 hover:text-pink-600"
               >
                 {" "}
                 <FaHouseUser className="text-3xl text-pink-600"></FaHouseUser>{" "}
-                Back-Home
+                Back Home
               </NavLink>
             </li>
           </ul>
@@ -81,15 +114,34 @@ const DashboardLayout = () => {
             <ul className="space-y-6 text-xl">
               <li>
                 <NavLink
-                  to={`/dashboard/allusers`}
+                  to={`/dashboard/manageService`}
                   className="flex items-center gap-4 hover:text-pink-600"
                 >
                   {" "}
-                  <FaPeopleRoof className="text-3xl text-pink-600"></FaPeopleRoof>{" "}
+                  <AiFillSetting className="text-3xl text-pink-600"></AiFillSetting>{" "}
+                  Manage Service
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={`/dashboard/allusers`}
+                  className="flex items-center gap-4 hover:text-pink-600"
+                >
+                  <HiUserGroup className="text-3xl text-pink-600"></HiUserGroup>{" "}
                   Manage Users
                 </NavLink>
               </li>
 
+              <li>
+                <NavLink
+                  to={`/dashboard/mycarts`}
+                  className="flex items-center gap-4 hover:text-pink-600"
+                >
+                  {" "}
+                  <BsFillCartCheckFill className="text-3xl text-pink-600"></BsFillCartCheckFill>{" "}
+                  My Carts
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to={`/dashboard`}
@@ -102,12 +154,22 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <NavLink
+                  to={`/dashboard/addService`}
+                  className="flex items-center gap-4 hover:text-pink-600"
+                >
+                  {" "}
+                  <LuCopyPlus className="text-3xl text-pink-600"></LuCopyPlus>{" "}
+                  Add Services
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to={`/`}
                   className="flex items-center gap-4 hover:text-pink-600"
                 >
                   {" "}
                   <FaHouseUser className="text-3xl text-pink-600"></FaHouseUser>{" "}
-                  Back-Home
+                  Back Home
                 </NavLink>
               </li>
             </ul>
